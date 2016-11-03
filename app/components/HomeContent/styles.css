@@ -1,0 +1,11 @@
+.homeContent {
+  display: flex;
+  flex: 9;
+  background: #00ebc1;
+  color: #ffffff;
+  padding: 1em;
+}
+
+.right {
+  flex: 5;
+}

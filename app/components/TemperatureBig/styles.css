@@ -1,0 +1,17 @@
+.temperatureBig {
+  text-align: center;
+}
+
+.number,
+.degree {
+  font-size: 8em;
+}
+
+.number {
+  color: #ffffff;
+}
+
+.degree {
+  color: #17ab91;
+  letter-spacing: -0.15em
+}

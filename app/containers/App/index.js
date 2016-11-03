@@ -13,6 +13,9 @@
 
 import React from 'react';
 
+import Header from 'containers/Header';
+import Footer from 'containers/Footer';
+
 import styles from './styles.css';
 
 export default class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -24,7 +27,9 @@ export default class App extends React.Component { // eslint-disable-line react/
   render() {
     return (
       <div className={styles.container}>
+        <Header />
         {React.Children.toArray(this.props.children)}
+        <Footer />
       </div>
     );
   }

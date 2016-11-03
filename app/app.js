@@ -18,6 +18,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import FontFaceObserver from 'fontfaceobserver';
 import { useScroll } from 'react-router-scroll';
 import LanguageProvider from 'containers/LanguageProvider';
 import configureStore from './store';
@@ -27,6 +28,16 @@ import { translationMessages } from './i18n';
 
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
 import 'sanitize.css/sanitize.css';
+import './global-styles';
+
+const latoObserver = new FontFaceObserver('Lato', {});
+
+// When Open Sans is loaded, add a font-family using Open Sans to the body
+latoObserver.load().then(() => {
+  document.body.classList.add('fontLoaded');
+}, () => {
+  document.body.classList.remove('fontLoaded');
+});
 
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
@@ -100,5 +111,6 @@ if (!window.Intl) {
 // Install ServiceWorker and AppCache in the end since
 // it's not most important operation and if main code fails,
 // we do not want it installed
-import { install } from 'offline-plugin/runtime';
-install();
+if (process.env.NODE_ENV === 'production') {
+  require('offline-plugin/runtime').install(); // eslint-disable-line global-require
+}
