@@ -32,7 +32,7 @@ import './global-styles';
 
 const latoObserver = new FontFaceObserver('Lato', {});
 
-// When Open Sans is loaded, add a font-family using Open Sans to the body
+// When Lato is loaded, add a font-family using Lato to the body
 latoObserver.load().then(() => {
   document.body.classList.add('fontLoaded');
 }, () => {
