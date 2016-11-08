@@ -13,7 +13,7 @@
 
 import React from 'react';
 
-import Updater from 'containers/Updater';
+import State from 'containers/State';
 import Header from 'containers/Header';
 import Footer from 'containers/Footer';
 
@@ -28,7 +28,7 @@ export default class App extends React.Component { // eslint-disable-line react/
   render() {
     return (
       <div className={styles.container}>
-        <Updater />
+        <State />
         <Header />
         {React.Children.toArray(this.props.children)}
         <Footer />

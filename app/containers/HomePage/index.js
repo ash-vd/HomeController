@@ -10,18 +10,23 @@
  */
 
 import React from 'react';
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 
 import Wrapper from 'components/Wrapper';
 import HomeContent from 'components/HomeContent';
 import SubContent from 'components/SubContent';
 
-export default class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+import { selectClimate } from './selectors';
+
+export class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <Wrapper>
-          <HomeContent />
+          <HomeContent climate={this.props.climate} />
           <SubContent>
             SUB
           </SubContent>
@@ -31,3 +36,16 @@ export default class HomePage extends React.Component { // eslint-disable-line r
     );
   }
 }
+
+const mapStateToProps = createSelector(
+  selectClimate(),
+  (climate) => ({ climate })
+);
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
