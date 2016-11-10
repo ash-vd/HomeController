@@ -17,15 +17,21 @@ import messages from './messages';
 
 class HomeContent extends React.Component { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
-    children: React.PropTypes.node,
+    climate: React.PropTypes.object,
   };
 
   render() {
+    const { climate } = this.props;
+
+    if (!climate) {
+      return null;
+    }
+    
     return (
       <Wrapper>
         <Left>
           <FormattedMessage {...messages.temperature} />
-          <HomeTemperatures climate={this.props.climate} />
+          <HomeTemperatures climate={climate} />
         </Left>
         <Right>
           Right

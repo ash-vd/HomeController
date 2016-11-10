@@ -5,22 +5,23 @@
 */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 
 import Swiper from 'components/Swiper';
 import TemperatureBig from 'components/TemperatureBig';
 
-import messages from './messages';
-
 class HomeTemperatures extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  static propTypes = {
+    climate: React.PropTypes.object,
+  };
+
   render() {
-    console.log(this.props);
+    const { climate } = this.props;
     return (
       <div>
         <Swiper>
-          <TemperatureBig roomName="Beneden" />
-          <TemperatureBig roomName="Boven" />
-          <TemperatureBig roomName="Slaapkamer" />
+          <TemperatureBig data={climate.get('beneden')} />
+          <TemperatureBig data={climate.get('boven')} />
+          <TemperatureBig data={climate.get('slaapkamer')} />
         </Swiper>
       </div>
     );

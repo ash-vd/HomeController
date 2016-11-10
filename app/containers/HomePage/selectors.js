@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the State state domain
  */
-const selectState = () => (state) => state.get('language');
+const selectState = () => (state) => state.get('state');
 
 /**
  * Select the state

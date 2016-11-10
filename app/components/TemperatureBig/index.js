@@ -6,23 +6,22 @@
 
 import React from 'react';
 
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
 import styles from './styles.css';
 
 class TemperatureBig extends React.Component { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
-    roomName: React.PropTypes.string,
+    data: React.PropTypes.object,
   };
 
   render() {
+    const { data } = this.props;
     return (
       <div className={styles.temperatureBig}>
         <div className={styles.roomName}>
-          {this.props.roomName}
+          {data.getIn(['attributes', 'friendly_name'])}
         </div>
         <span className={styles.number}>
-          21
+          {data.getIn(['attributes', 'temperature'])}
         </span>
         <span className={styles.degree}>
           &deg; C
