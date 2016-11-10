@@ -6,7 +6,7 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  temperature: {
+  header: {
     id: 'app.components.HomeTemperatures.header',
     defaultMessage: 'Temperature inside now',
   },

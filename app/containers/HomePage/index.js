@@ -20,12 +20,16 @@ import SubContent from 'components/SubContent';
 import { selectClimate } from './selectors';
 
 export class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  static propTypes = {
+    climate: React.PropTypes.object,
+  };
 
   render() {
+    const { climate } = this.props;
     return (
       <div>
         <Wrapper>
-          <HomeContent climate={this.props.climate} />
+          <HomeContent climate={climate} />
           <SubContent>
             SUB
           </SubContent>

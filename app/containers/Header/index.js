@@ -8,6 +8,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Notifications from 'components/Notifications';
+import CurrentTime from 'components/CurrentTime';
+import CurrentDate from 'components/CurrentDate';
 
 import styles from './styles.css';
 
@@ -16,7 +18,12 @@ export class Header extends React.Component { // eslint-disable-line react/prefe
     return (
       <div className={styles.header}>
         <div className={styles.timeWrapper}>
-          19:02
+          <span className={styles.time}>
+            <CurrentTime />
+          </span>
+          <span className={styles.date}>
+            <CurrentDate />
+          </span>
         </div>
         <div className={styles.notificationWrapper}>
           <Notifications />

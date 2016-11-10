@@ -4,13 +4,15 @@
  *
  */
 
+import config from 'config';
+
 import { fromJS } from 'immutable';
 import {
   CHANGE_LOCALE,
 } from './constants';
 
 const initialState = fromJS({
-  locale: 'en',
+  locale: config.DEFAULT_LOCALE,
 });
 
 function languageProviderReducer(state = initialState, action) {

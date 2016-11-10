@@ -1,7 +1,7 @@
 [
   {
     "id": "app.components.HomeTemperatures.header",
-    "defaultMessage": "This is the HomeTemperatures component !",
+    "defaultMessage": "Binnentemperatuur",
     "message": ""
   },
   {
@@ -12,7 +12,7 @@
   {
     "id": "app.components.Notifications.message",
     "defaultMessage": "You have {number} new {number, plural, one {message} other {messages}}",
-    "message": ""
+    "message": "Er {number, plural, one {is} other {zijn}} {number} {number, plural, one {nieuw} other {nieuwe}} {number, plural, one {bericht} other {berichten}}"
   },
   {
     "id": "app.components.TemperatureBig.header",

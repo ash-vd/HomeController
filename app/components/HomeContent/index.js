@@ -30,7 +30,7 @@ class HomeContent extends React.Component { // eslint-disable-line react/prefer-
     return (
       <Wrapper>
         <Left>
-          <FormattedMessage {...messages.temperature} />
+          <FormattedMessage {...messages.header} />
           <HomeTemperatures climate={climate} />
         </Left>
         <Right>

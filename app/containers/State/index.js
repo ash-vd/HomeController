@@ -30,8 +30,6 @@ export class State extends React.Component { // eslint-disable-line react/prefer
         const state = this._formatState(response.data);
 
         dispatch(setState(state));
-
-        console.log(state);
       })
       .catch((error) => {
         console.error(error);
