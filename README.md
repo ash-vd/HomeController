@@ -1,6 +1,6 @@
 ##HomeController for Home Assistant
 
-[[https://www.ashwinvandijk.nl/files/HomeController.png|alt=HomeController]]
+![HomeController](https://www.ashwinvandijk.nl/files/HomeController.png)
 
 ## Quick start
 
