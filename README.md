@@ -1,3 +1,7 @@
+##HomeController for Home Assistant
+
+[[https://www.ashwinvandijk.nl/files/HomeController.png|alt=HomeController]]
+
 ## Quick start
 
 1. Clone this repo using `git clone https://github.com/ashwinvandijk/HomeController.git`
