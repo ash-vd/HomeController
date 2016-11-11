@@ -17,21 +17,22 @@ import Wrapper from 'components/Wrapper';
 import HomeContent from 'components/HomeContent';
 import SubContent from 'components/SubContent';
 
-import { selectClimate } from './selectors';
+import { selectState } from './selectors';
 
 export class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
-    climate: React.PropTypes.object,
+    state: React.PropTypes.object,
   };
 
   render() {
-    const { climate } = this.props;
+    const { state } = this.props;
+
     return (
       <div>
         <Wrapper>
-          <HomeContent climate={climate} />
+          <HomeContent state={state} />
           <SubContent>
-            SUB
+            
           </SubContent>
         </Wrapper>
 
@@ -41,8 +42,8 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
 }
 
 const mapStateToProps = createSelector(
-  selectClimate(),
-  (climate) => ({ climate })
+  selectState(),
+  (state) => ({ state })
 );
 
 function mapDispatchToProps(dispatch) {

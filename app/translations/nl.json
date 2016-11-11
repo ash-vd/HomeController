@@ -1,7 +1,7 @@
 [
   {
     "id": "app.components.HomeTemperatures.header",
-    "defaultMessage": "Binnentemperatuur",
+    "defaultMessage": "This is the HomeTemperatures component !",
     "message": ""
   },
   {
@@ -15,13 +15,18 @@
     "message": "Er {number, plural, one {is} other {zijn}} {number} {number, plural, one {nieuw} other {nieuwe}} {number, plural, one {bericht} other {berichten}}"
   },
   {
-    "id": "app.components.TemperatureBig.header",
-    "defaultMessage": "This is the TemperatureBig component !",
-    "message": ""
+    "id": "app.components.TemperatureBig.desired",
+    "defaultMessage": "Desired",
+    "message": "Gewenst"
   },
   {
     "id": "app.containers.Header.header",
     "defaultMessage": "This is Header container !",
+    "message": ""
+  },
+  {
+    "id": "app.containers.SetThermostatPage.header",
+    "defaultMessage": "This is SetThermostatPage container !",
     "message": ""
   }
 ]

@@ -34,6 +34,26 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/thermostat/:entityID',
+      name: 'setThermostatPage',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/SetThermostatPage/reducer'),
+          System.import('containers/SetThermostatPage/sagas'),
+          System.import('containers/SetThermostatPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('setThermostatPage', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

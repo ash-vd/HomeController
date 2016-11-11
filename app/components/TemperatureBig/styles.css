@@ -1,5 +1,16 @@
 .temperatureBig {
+  display: block;
+  text-decoration: none;
   text-align: center;
+  position: relative;
+  color: #ffffff;
+  padding-top: 1em;
+}
+
+.roomName {
+  font-size: 1.75em;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 
 .number,
@@ -14,4 +25,23 @@
 .degree {
   color: #17ab91;
   letter-spacing: -0.15em
+}
+
+.desired {
+  position: absolute;
+  left: 10%;
+  top: 1em;
+}
+
+.desiredText {
+  font-size: .8em;
+  color: #17ab91;
+}
+
+.desiredNumber,
+.desiredDegree {
+  font-size: 1.5em;
+  color: #17ab91;
+  margin-top: -.5em;
+  display: inline-block;
 }

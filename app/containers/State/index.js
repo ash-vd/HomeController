@@ -36,6 +36,8 @@ export class State extends React.Component { // eslint-disable-line react/prefer
       });
     const source = new EventSource(`${config.HA_URL}/api/stream?api_password=${config.HA_PASSWORD}`);
     source.onmessage = (event) => {
+      if (event.data === 'ping') return;
+
       const response = JSON.parse(event.data);
       if (response.event_type !== 'state_changed') return;
 
@@ -55,6 +57,7 @@ export class State extends React.Component { // eslint-disable-line react/prefer
       }
 
       const object = Object.assign({
+        entity_group,
         entity_name,
       }, obj);
 

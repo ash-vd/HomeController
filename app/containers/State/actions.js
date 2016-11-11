@@ -23,7 +23,6 @@ export function updateState(state) {
   const entity_group = splitted[0]; // eslint-disable-line camelcase
   const entity_name = splitted[1]; // eslint-disable-line camelcase
 
-  console.log(entity_group, entity_name);
   return {
     type: UPDATE_STATE,
     entity_group,

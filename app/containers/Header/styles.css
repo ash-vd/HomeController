@@ -2,6 +2,7 @@
   display: flex;
   position: fixed;
   width: 100%;
+  top: 0;
   height: 3em;
   z-index: 10;
 }

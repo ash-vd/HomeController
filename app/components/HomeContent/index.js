@@ -5,7 +5,7 @@
 */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import Helmet from 'react-helmet';
 
 import HomeTemperatures from 'components/HomeTemperatures';
 
@@ -13,28 +13,31 @@ import Wrapper from './Wrapper';
 import Left from './Left';
 import Right from './Right';
 
-import messages from './messages';
-
 class HomeContent extends React.Component { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
-    climate: React.PropTypes.object,
+    state: React.PropTypes.object,
   };
 
   render() {
-    const { climate } = this.props;
+    const { state } = this.props;
 
-    if (!climate) {
+    if (state.size === 0) {
       return null;
     }
-    
+
     return (
       <Wrapper>
+        <Helmet
+          title="Home"
+          meta={[
+            { name: 'description', content: 'Homepage' },
+          ]}
+        />
         <Left>
-          <FormattedMessage {...messages.header} />
-          <HomeTemperatures climate={climate} />
+          <HomeTemperatures state={state} />
         </Left>
         <Right>
-          Right
+          
         </Right>
       </Wrapper>
     );
