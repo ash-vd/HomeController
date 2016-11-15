@@ -11,13 +11,12 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 
 import Wrapper from 'components/Wrapper';
 import HomeContent from 'components/HomeContent';
 import SubContent from 'components/SubContent';
 
-import { selectState } from './selectors';
+import { selectHomePage } from './selectors';
 
 export class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
@@ -41,10 +40,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
   }
 }
 
-const mapStateToProps = createSelector(
-  selectState(),
-  (state) => ({ state })
-);
+const mapStateToProps = selectHomePage;
 
 function mapDispatchToProps(dispatch) {
   return {

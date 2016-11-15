@@ -1,0 +1,71 @@
+.thermostatControl {
+  display: flex;
+  height: 100%;
+  background: #333333;
+}
+
+.close {
+  color: #fff;
+  position: absolute;
+  right: 2em;
+  top: 2em;
+  width: 2em;
+  height: 2em;
+}
+
+.thermostatControlWrapper {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.currentTemperature {
+  flex: 2;
+  text-align: center;
+  color: #ffffff;
+  font-size: 5em;
+}
+
+.control {
+  flex: 3;
+  display: flex;
+  position: relative;
+  text-align: center;
+  align-items: center;
+}
+
+.difference {
+  position: absolute;
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 3em;
+  color: #666;
+}
+
+.desiredTemperature {
+  flex: 2;
+  text-align: center;
+  color: #fff;
+  font-size: 5em;
+}
+
+.svgWrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.svgBorderBackground {
+  stroke: #00ebc1;
+  stroke-width: 2;
+  stroke-dasharray: .9%;
+  stroke-linecap: butt;
+}
+
+.svgBorder {
+  stroke: #333;
+  stroke-width: 3;
+  stroke-dasharray: 136;
+  stroke-dashoffset: 433;
+}

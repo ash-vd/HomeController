@@ -15,18 +15,15 @@ class HomeTemperatures extends React.Component { // eslint-disable-line react/pr
   };
 
   render() {
-    const { state } = this.props;
-
-    const climate = state.get('climate');
-    const sensor = state.get('sensor');
+    const { climate, sensor } = this.props.state;
 
     return (
       <div>
         <Swiper>
-          <TemperatureBig data={sensor.get('badkamer')} />
-          <TemperatureBig data={climate.get('beneden')} />
-          <TemperatureBig data={climate.get('boven')} />
-          <TemperatureBig data={climate.get('slaapkamer')} />
+          <TemperatureBig data={sensor.badkamer} />
+          <TemperatureBig data={climate.beneden} />
+          <TemperatureBig data={climate.boven} />
+          <TemperatureBig data={climate.slaapkamer} />
         </Swiper>
       </div>
     );

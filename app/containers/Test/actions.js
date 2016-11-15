@@ -1,6 +1,6 @@
 /*
  *
- * ThermostatController actions
+ * Test actions
  *
  */
 

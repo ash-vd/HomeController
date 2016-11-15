@@ -1,6 +1,6 @@
 /*
  *
- * ThermostatController reducer
+ * Test reducer
  *
  */
 
@@ -11,7 +11,7 @@ import {
 
 const initialState = fromJS({});
 
-function thermostatControllerReducer(state = initialState, action) {
+function testReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
@@ -20,4 +20,4 @@ function thermostatControllerReducer(state = initialState, action) {
   }
 }
 
-export default thermostatControllerReducer;
+export default testReducer;

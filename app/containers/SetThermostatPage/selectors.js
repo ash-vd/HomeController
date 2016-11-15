@@ -1,25 +1,20 @@
 import { createSelector } from 'reselect';
 
 /**
- * Direct selector to the setThermostatPage state domain
+ * Direct selector to the State state domain
  */
-const selectSetThermostatPageDomain = () => (state) => state.get('setThermostatPage');
+const selectState = () => (state) => state.get('state');
 
 /**
- * Other specific selectors
+ * Select the state
  */
 
-
-/**
- * Default selector used by SetThermostatPage
- */
-
-const selectSetThermostatPage = () => createSelector(
-  selectSetThermostatPageDomain(),
-  (substate) => substate.toJS()
+const selectSetThermostatPage = createSelector(
+  selectState(),
+  (state) => ({ state: state.toJS() })
 );
 
 export default selectSetThermostatPage;
 export {
-  selectSetThermostatPageDomain,
+  selectSetThermostatPage,
 };

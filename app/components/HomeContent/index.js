@@ -21,9 +21,7 @@ class HomeContent extends React.Component { // eslint-disable-line react/prefer-
   render() {
     const { state } = this.props;
 
-    if (state.size === 0) {
-      return null;
-    }
+    if (!Object.keys(state).length) return null;
 
     return (
       <Wrapper>
@@ -37,7 +35,7 @@ class HomeContent extends React.Component { // eslint-disable-line react/prefer-
           <HomeTemperatures state={state} />
         </Left>
         <Right>
-          
+
         </Right>
       </Wrapper>
     );

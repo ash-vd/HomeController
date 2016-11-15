@@ -20,26 +20,26 @@ class TemperatureBig extends React.Component { // eslint-disable-line react/pref
     const { data } = this.props;
 
     // in a sensor we should pick the Temperature-attribute
-    let currentTemperature = data.getIn(['attributes', 'current_temperature']);
-    if (data.get('entity_group') === 'sensor') {
-      currentTemperature = data.getIn(['attributes', 'Temperature']);
+    let currentTemperature = data.attributes.current_temperature;
+    if (data.entity_group === 'sensor') {
+      currentTemperature = data.attributes.Temperature;
     }
 
     return (
       <Link
-        to={`/thermostat/${data.get('entity_id')}/`}
+        to={`/thermostat/${data.entity_id}/`}
         className={styles.temperatureBig}
       >
         {
           /* We don't have a desired temperature in a sensor */
-          data.getIn(['attributes', 'temperature']) &&
+          data.attributes.temperature &&
             <div className={styles.desired}>
               <span className={styles.desiredText}>
                 <FormattedMessage {...messages.desired} />
               </span><br />
 
               <span className={styles.desiredNumber}>
-                {data.getIn(['attributes', 'temperature'])}
+                {data.attributes.temperature}
               </span>
               <span className={styles.desiredDegree}>
                 &deg; C
@@ -48,7 +48,7 @@ class TemperatureBig extends React.Component { // eslint-disable-line react/pref
         }
 
         <div className={styles.roomName}>
-          {data.getIn(['attributes', 'friendly_name'])}
+          {data.attributes.friendly_name}
         </div>
         <span className={styles.number}>
           {Math.round(currentTemperature)}

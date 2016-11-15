@@ -1,16 +1,16 @@
 /*
  *
- * ThermostatController
+ * Test
  *
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
-import selectThermostatController from './selectors';
+import selectTest from './selectors';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-export class ThermostatController extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class Test extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
@@ -20,7 +20,7 @@ export class ThermostatController extends React.Component { // eslint-disable-li
   }
 }
 
-const mapStateToProps = selectThermostatController();
+const mapStateToProps = selectTest();
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -28,4 +28,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ThermostatController);
+export default connect(mapStateToProps, mapDispatchToProps)(Test);

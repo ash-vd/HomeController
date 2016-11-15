@@ -9,12 +9,12 @@ const selectState = () => (state) => state.get('state');
  * Select the state
  */
 
-const selectClimate = () => createSelector(
+const selectHomePage = createSelector(
   selectState(),
-  (stateState) => stateState.get('climate')
+  (state) => ({ state: state.toJS() })
 );
 
+export default selectHomePage;
 export {
-  selectState,
-  selectClimate,
+  selectHomePage,
 };
