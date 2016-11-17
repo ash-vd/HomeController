@@ -1,7 +1,12 @@
 [
   {
+    "id": "app.components.Dial.header",
+    "defaultMessage": "This is the Dial component !",
+    "message": ""
+  },
+  {
     "id": "app.components.HomeTemperatures.header",
-    "defaultMessage": "This is the HomeTemperatures component !",
+    "defaultMessage": "Temperature inside now",
     "message": ""
   },
   {
@@ -16,6 +21,16 @@
   },
   {
     "id": "app.components.TemperatureBig.desired",
+    "defaultMessage": "Desired",
+    "message": "Gewenst"
+  },
+  {
+    "id": "app.components.ThermostatControl.current",
+    "defaultMessage": "Current",
+    "message": "Huidig"
+  },
+  {
+    "id": "app.components.ThermostatControl.desired",
     "defaultMessage": "Desired",
     "message": "Gewenst"
   },
