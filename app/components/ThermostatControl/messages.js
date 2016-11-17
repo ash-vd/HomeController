@@ -6,8 +6,13 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  header: {
-    id: 'app.components.ThermostatControl.header',
-    defaultMessage: 'This is the ThermostatControl component !',
+  current: {
+    id: 'app.components.ThermostatControl.current',
+    defaultMessage: 'Current',
+  },
+
+  desired: {
+    id: 'app.components.ThermostatControl.desired',
+    defaultMessage: 'Desired',
   },
 });
