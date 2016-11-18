@@ -1,6 +1,13 @@
 .dial {
   width: 100%;
   height: 100%;
+  position: relative;
+}
+
+.knob {
+  fill: #00ff00;
+  position: absolute;
+  transform-origin: center;
 }
 
 .svgBorderCurrent {

@@ -88,6 +88,11 @@ module.exports = (options) => ({
       '.jsx',
       '.react.js',
     ],
+    alias: {
+      TweenLite: 'gsap/src/uncompressed/TweenLite',
+      Draggable: 'gsap/src/uncompressed/utils/Draggable',
+      CSSPlugin: 'gsap/src/uncompressed/plugins/CSSPlugin',
+    },
     mainFields: [
       'jsnext:main',
       'main',
