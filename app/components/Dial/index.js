@@ -12,6 +12,13 @@
 *
 */
 
+const RadiansToDegrees = (valRad) => {
+  let degrees = (360/(2*Math.PI)*valRad);
+  degrees  = (degrees + 360) % 360 + 90;
+  degrees  = (degrees > 360 ? degrees - 360 : degrees);
+  return Math.round(degrees / 22.5) * 22.5;
+};
+
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { TweenMax } from 'gsap';
@@ -38,39 +45,38 @@ class Dial extends React.Component { // eslint-disable-line react/prefer-statele
     TweenMax.set(this.currentLevel, { drawSVG: `0% ${currentLevel}%` });
     TweenMax.set(this.desiredLevel, { drawSVG: `0% ${desiredLevel}%` });
 
-    this._initDraggable();
+    this._initDraggable(desiredLevel);
   }
 
-  _initDraggable = () => {
+  _initDraggable = (currentRotation) => {
     Draggable.create(this.knob, {
       bounds: {
         maxRotation: 360,
         minRotation: 0,
       },
       type: 'rotation',
-      snap: (endValue) => Math.round(endValue / 36) * 36,
-      // onClick:function(e){
-      //   var y = (e.layerY < 0 ? 360 - e.layerY : e.layerY);
-      //   var x = (e.layerX < 0 ? 360 - e.layerX : e.layerX);
-      //   var rad = Math.atan2(e.layerY, e.layerX);
-      //   TweenMax.to(container, .75, {
-      //     rotation: RadiansToDegrees(rad),
-      //     onUpdate: this._dragUpdate
-      //   });
-      // },
+      snap: (endValue) => Math.round(endValue / 18) * 18, // snap to halve degrees
+      onClick: (e) => {
+        const y = (e.layerY < 0 ? 360 - e.layerY : e.layerY);
+        const x = (e.layerX < 0 ? 360 - e.layerX : e.layerX);
+        const rad = Math.atan2(e.layerY, e.layerX);
+        TweenMax.to(this.knob, .75, {
+          rotation: RadiansToDegrees(rad),
+          onUpdate: this._dragUpdate
+        });
+      },
       throwProps: true,
       onDrag: this._dragUpdate,
       onThrowUpdate: this._dragUpdate,
     });
 
-    setTimeout(() => {
-      const dragObj = Draggable.get(this.knob);
-      dragObj.update();
-    }, 2000);
+    TweenMax.set(this.knob, {
+      rotation: currentRotation * 3.6,
+    });
   }
 
-  _dragUpdate = (v) => {
-    console.log(v);
+  _dragUpdate = () => {
+    const { min, max, displayUpdate } = this.props;
     const val = (this.knob._gsTransform.rotation / 360);
     let percent = val * 100;
     percent = (percent > 100) ? 100 : percent;
@@ -78,15 +84,20 @@ class Dial extends React.Component { // eslint-disable-line react/prefer-statele
     TweenMax.set(this.desiredLevel, {
       drawSVG: `${percent}%`,
     });
+
+    /*
+      Minimum value + (maximum - minimum) * percentage
+     */
+    
+    if (displayUpdate && typeof displayUpdate === 'function') {
+      // @TODO fix for halve degrees
+      const newValue = Math.round(min + (max - min) * (percent / 100) / 18 * 18);
+      console.log(newValue);
+      displayUpdate(newValue);
+    }
   }
 
   render() {
-    const { min, max, current, desired } = this.props;
-    const level = (desired - min) / (max - min) * 100;
-    const currentRotation = level * 3.6;
-
-    console.log(level, currentRotation);
-
     return (
       <div className={styles.dial}>
         <div ref={(knob) => { this.knob = knob; }} className={styles.knob} />

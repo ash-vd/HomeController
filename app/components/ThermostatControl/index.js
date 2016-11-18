@@ -18,11 +18,24 @@ class ThermostatControl extends React.Component { // eslint-disable-line react/p
     data: React.PropTypes.object,
   };
 
+  state = {
+    display: 0,
+  }
+
+  _displayUpdate = (display) => {
+    console.log('display', display);
+    this.setState({
+      display,
+    });
+  }
+
   render() {
     const { attributes } = this.props.data;
     attributes.current_temperature = 17; // temporary
 
-    const difference = attributes.temperature - attributes.current_temperature;
+    const desiredTemp = this.state.display || attributes.temperature;
+    const difference = desiredTemp - attributes.current_temperature;
+
     return (
       <div className={styles.thermostatControl}>
         <button className={styles.close} onClick={browserHistory.goBack}>
@@ -44,13 +57,19 @@ class ThermostatControl extends React.Component { // eslint-disable-line react/p
             <span className={styles.difference}>
               {difference > 0 ? '+' : null}{difference}
             </span>
-            <Dial min={attributes.min_temp} max={attributes.max_temp} current={attributes.current_temperature} desired={attributes.temperature} />
+            <Dial
+              min={attributes.min_temp}
+              max={attributes.max_temp}
+              current={attributes.current_temperature}
+              desired={attributes.temperature}
+              displayUpdate={this._displayUpdate}
+            />
           </div>
           <div className={styles.desiredTemperature}>
             <span className={styles.desiredTitle}>
               <FormattedMessage {...messages.desired} />
             </span><br />
-            <span>{attributes.temperature} <span className={styles.degree}>&deg; C</span></span>
+            <span>{desiredTemp} <span className={styles.degree}>&deg; C</span></span>
           </div>
         </div>
       </div>
