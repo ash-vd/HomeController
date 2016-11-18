@@ -92,6 +92,8 @@ module.exports = (options) => ({
       TweenLite: 'gsap/src/uncompressed/TweenLite',
       Draggable: 'gsap/src/uncompressed/utils/Draggable',
       CSSPlugin: 'gsap/src/uncompressed/plugins/CSSPlugin',
+      drawSVG: 'libraries/gsap/drawSVG',
+      throwPropsPlugin: 'libraries/gsap/throwPropsPlugin',
     },
     mainFields: [
       'jsnext:main',

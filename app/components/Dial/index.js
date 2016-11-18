@@ -16,7 +16,8 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { TweenMax } from 'gsap';
 import Draggable from 'Draggable';
-import svg from 'libraries/gsap/drawSVG';
+import drawSVG from 'drawSVG'; // eslint-disable-line import/no-unresolved
+import throwPropsPlugin from 'throwPropsPlugin'; // eslint-disable-line import/no-unresolved
 
 import messages from './messages';
 import styles from './styles.css';
@@ -47,10 +48,7 @@ class Dial extends React.Component { // eslint-disable-line react/prefer-statele
         minRotation: 0,
       },
       type: 'rotation',
-      snap: (endValue) => {
-        const end = Math.round(endValue / 22.5) * 22.5;
-        return end;
-      },
+      snap: (endValue) => Math.round(endValue / 36) * 36,
       // onClick:function(e){
       //   var y = (e.layerY < 0 ? 360 - e.layerY : e.layerY);
       //   var x = (e.layerX < 0 ? 360 - e.layerX : e.layerX);
@@ -65,9 +63,10 @@ class Dial extends React.Component { // eslint-disable-line react/prefer-statele
       onThrowUpdate: this._dragUpdate,
     });
 
-    TweenMax.set([this.knob], {
-      position: 'absolute',
-    });
+    setTimeout(() => {
+      const dragObj = Draggable.get(this.knob);
+      dragObj.update();
+    }, 2000);
   }
 
   _dragUpdate = (v) => {
@@ -77,18 +76,28 @@ class Dial extends React.Component { // eslint-disable-line react/prefer-statele
     percent = (percent > 100) ? 100 : percent;
     percent = (percent < 0) ? 0 : percent;
     TweenMax.set(this.desiredLevel, {
-      drawSVG: `${percent}%`
+      drawSVG: `${percent}%`,
     });
   }
 
   render() {
+    const { min, max, current, desired } = this.props;
+    const level = (desired - min) / (max - min) * 100;
+    const currentRotation = level * 3.6;
+
+    console.log(level, currentRotation);
+
     return (
-      <svg className={styles.dial} width="100%" height="100%" viewBox="0 0 80 80">
-        <path ref={(knob) => { this.knob = knob; }} className={styles.knob} fill="none" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" />
-        <path ref={(desiredLevel) => { this.desiredLevel = desiredLevel; }} className={styles.svgBorderDesired} fill="none" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" />
-        <path ref={(currentLevel) => { this.currentLevel = currentLevel; }} className={styles.svgBorderCurrent} fill="none" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" />
-        <path className={styles.overlay} fill="none" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" />
-      </svg>
+      <div className={styles.dial}>
+        <div ref={(knob) => { this.knob = knob; }} className={styles.knob} />
+        <div className={styles.test} />
+        <svg width="100%" height="100%" viewBox="0 0 80 80">
+          <path className={styles.svgGuide} fill="none" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" />
+          <path ref={(desiredLevel) => { this.desiredLevel = desiredLevel; }} className={styles.svgBorderDesired} fill="none" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" />
+          <path ref={(currentLevel) => { this.currentLevel = currentLevel; }} className={styles.svgBorderCurrent} fill="none" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" />
+          <path className={styles.overlay} fill="none" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" />
+        </svg>
+      </div>
     );
   }
 }
