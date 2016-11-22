@@ -12,13 +12,6 @@
 *
 */
 
-const RadiansToDegrees = (valRad) => {
-  let degrees = (360/(2*Math.PI)*valRad);
-  degrees  = (degrees + 360) % 360 + 90;
-  degrees  = (degrees > 360 ? degrees - 360 : degrees);
-  return Math.round(degrees / 22.5) * 22.5;
-};
-
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { TweenMax } from 'gsap';
@@ -56,15 +49,19 @@ class Dial extends React.Component { // eslint-disable-line react/prefer-statele
       },
       type: 'rotation',
       snap: (endValue) => Math.round(endValue / 18) * 18, // snap to halve degrees
-      onClick: (e) => {
-        const y = (e.layerY < 0 ? 360 - e.layerY : e.layerY);
-        const x = (e.layerX < 0 ? 360 - e.layerX : e.layerX);
-        const rad = Math.atan2(e.layerY, e.layerX);
-        TweenMax.to(this.knob, .75, {
-          rotation: RadiansToDegrees(rad),
-          onUpdate: this._dragUpdate
-        });
-      },
+      // onClick: (event) => {
+      //   const e = event.changedTouches.item(0);
+      //   // const y = (e.layerY < 0 ? 360 - e.layerY : e.layerY);
+      //   // const x = (e.layerX < 0 ? 360 - e.layerX : e.layerX);
+      //   // console.log(getCoords(e.target));
+      //   console.log(e.target.getClientRects()[0].top);
+      //   const rad = Math.atan2(e.clientY - 151, e.clientX - 236);
+
+      //   TweenMax.to(this.knob, .75, {
+      //     rotation: RadiansToDegrees(rad),
+      //     onUpdate: this._dragUpdate
+      //   });
+      // },
       throwProps: true,
       onDrag: this._dragUpdate,
       onThrowUpdate: this._dragUpdate,
@@ -88,12 +85,11 @@ class Dial extends React.Component { // eslint-disable-line react/prefer-statele
     /*
       Minimum value + (maximum - minimum) * percentage
      */
-    
+
     if (displayUpdate && typeof displayUpdate === 'function') {
-      // @TODO fix for halve degrees
-      const newValue = Math.round(min + (max - min) * (percent / 100) / 18 * 18);
-      console.log(newValue);
-      displayUpdate(newValue);
+      const newValue = min + (max - min) * (percent / 100) / 18 * 18;
+      const newHalve = Math.round(newValue * 2) / 2;
+      displayUpdate(newHalve);
     }
   }
 
