@@ -13,6 +13,15 @@
   color: #ffffff;
 }
 
+.thermometer {
+  position: absolute;
+  right: 2em;
+  bottom: 2em;
+  width: 3em;
+  height: 3em;
+  fill: #17ab91;
+}
+
 .number,
 .degree {
   font-size: 8em;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const ProgressBar = styled.div`
-  width: 80%;
+  width: 70%;
   left: 50%;
   transform: translateX(-50%);
   height: .5em;

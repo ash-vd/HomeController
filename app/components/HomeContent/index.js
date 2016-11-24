@@ -8,6 +8,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import HomeTemperatures from 'components/HomeTemperatures';
+import List from 'components/List';
 
 import Wrapper from './Wrapper';
 import Left from './Left';
@@ -35,7 +36,7 @@ class HomeContent extends React.Component { // eslint-disable-line react/prefer-
           <HomeTemperatures state={state} />
         </Left>
         <Right>
-
+          <List data={state.light} />
         </Right>
       </Wrapper>
     );

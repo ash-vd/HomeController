@@ -48,6 +48,9 @@ export class State extends React.Component { // eslint-disable-line react/prefer
   _formatState(state) {
     const formattedState = {};
     state.forEach((obj) => {
+      // don't add hidden devices
+      if (obj.attributes && obj.attributes.hidden === true) return;
+
       const splitted = obj.entity_id.split('.');
       const entity_group = splitted[0]; // eslint-disable-line camelcase
       const entity_name = splitted[1]; // eslint-disable-line camelcase

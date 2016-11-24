@@ -8,6 +8,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 
+import { Thermometer } from 'components/Icons'; 
+
 import styles from './styles.css';
 import messages from './messages.js';
 
@@ -30,6 +32,7 @@ class TemperatureBig extends React.Component { // eslint-disable-line react/pref
         to={`/thermostat/${data.entity_id}/`}
         className={styles.temperatureBig}
       >
+        <Thermometer className={styles.thermometer} />
         {
           /* We don't have a desired temperature in a sensor */
           data.attributes.temperature &&
