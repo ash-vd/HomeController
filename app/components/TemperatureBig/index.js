@@ -8,10 +8,33 @@ import React from 'react';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 
-import { Thermometer } from 'components/Icons'; 
+import { Thermometer } from 'components/Icons';
 
 import styles from './styles.css';
 import messages from './messages.js';
+
+
+const Wrapper = ({ className, children, data }) => {
+  if (data.entity_group === 'sensor') {
+    return (
+      <div className={className}>
+        { children }
+      </div>
+    );
+  }
+
+  return (
+    <Link to={`/thermostat/${data.entity_id}/`} className={className}>
+      { children }
+    </Link>
+  );
+};
+
+Wrapper.propTypes = {
+  className: React.PropTypes.string,
+  children: React.PropTypes.array,
+  data: React.PropTypes.object,
+};
 
 class TemperatureBig extends React.Component { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
@@ -28,10 +51,7 @@ class TemperatureBig extends React.Component { // eslint-disable-line react/pref
     }
 
     return (
-      <Link
-        to={`/thermostat/${data.entity_id}/`}
-        className={styles.temperatureBig}
-      >
+      <Wrapper className={styles.temperatureBig} data={data}>
         <Thermometer className={styles.thermometer} />
         {
           /* We don't have a desired temperature in a sensor */
@@ -59,7 +79,7 @@ class TemperatureBig extends React.Component { // eslint-disable-line react/pref
         <span className={styles.degree}>
           &deg; C
         </span>
-      </Link>
+      </Wrapper>
     );
   }
 }

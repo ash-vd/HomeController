@@ -36,7 +36,7 @@ class HomeContent extends React.Component { // eslint-disable-line react/prefer-
           <HomeTemperatures state={state} />
         </Left>
         <Right>
-          <List data={state.light} />
+          <List state={state} data={state.group.lights} />
         </Right>
       </Wrapper>
     );

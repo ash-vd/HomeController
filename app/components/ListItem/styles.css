@@ -1,0 +1,20 @@
+.listItem {
+  padding: 1em .25em;
+}
+
+.icon {
+  width: 2em;
+  height: 2em;
+  margin-right: .5em;
+  fill: #17ab91;
+}
+
+.iconActive {
+  fill: #fff;
+}
+
+.switch {
+  float: right;
+  margin-right: 3em;
+  margin-top: .25em;
+}

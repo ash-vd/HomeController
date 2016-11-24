@@ -1,0 +1,27 @@
+.switch {
+  position: relative;
+  height: 1.5em;
+  width: 2.5em;
+  border: .15em solid #fff;
+  border-radius: 1em;
+
+  &:after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    right: .1em;
+    top: 50%;
+    transform: translateY(-50%);
+    height: .8em;
+    width: .8em;
+    background: #17ab91;
+    transition: 300ms;
+  }
+}
+
+.switchOn {
+  &:after {
+    right: 1.4em;
+    background: #fff;
+  }
+}
