@@ -54,7 +54,7 @@ class ListItem extends React.Component { // eslint-disable-line react/prefer-sta
         {this._getIcon(entity)}
         { entity.attributes.friendly_name }
         <span className={styles.switch}>
-          <Switch state={entity.state} />
+          <Switch entity={entity} />
         </span>
       </div>
     );

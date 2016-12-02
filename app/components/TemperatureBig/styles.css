@@ -11,6 +11,7 @@
   font-size: 1.75em;
   text-transform: uppercase;
   color: #ffffff;
+  margin-bottom: 2em;
 }
 
 .thermometer {
@@ -53,4 +54,27 @@
   color: #17ab91;
   margin-top: -.5em;
   display: inline-block;
+}
+
+.timer {
+  position: absolute;
+  right: 2em;
+  top: 2em;
+}
+
+.timerTextTime,
+.timerTextDesired {
+  color: #17ab91;
+}
+
+.timerTextDesired {
+  margin-left: 2em;
+}
+
+.timerTextNumber {
+  color: #fff;
+}
+
+.timerTextDegrees {
+  letter-spacing: -0.15em
 }

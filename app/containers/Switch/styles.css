@@ -4,6 +4,7 @@
   width: 2.5em;
   border: .15em solid #fff;
   border-radius: 1em;
+  outline: none;
 
   &:after {
     content: '';

@@ -70,6 +70,15 @@ class TemperatureBig extends React.Component { // eslint-disable-line react/pref
             </div>
         }
 
+        <div className={styles.timer}>
+          <div className={styles.timerTextTime}>
+            23.00
+          </div>
+          <div className={styles.timerTextDesired}>
+            <span className={styles.timerTextNumber}>15</span> <span className={styles.timerTextDegrees}>&deg; C</span>
+          </div>
+        </div>
+
         <div className={styles.roomName}>
           {data.attributes.friendly_name}
         </div>
