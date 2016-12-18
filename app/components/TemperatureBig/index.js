@@ -44,10 +44,17 @@ class TemperatureBig extends React.Component { // eslint-disable-line react/pref
   render() {
     const { data } = this.props;
 
+    console.log(data);
+
     // in a sensor we should pick the Temperature-attribute
     let currentTemperature = data.attributes.current_temperature;
     if (data.entity_group === 'sensor') {
-      currentTemperature = data.attributes.Temperature;
+
+      if (data.attributes.Temperature) {
+        currentTemperature = data.attributes.Temperature;
+      } else if (data.state) {
+        currentTemperature = data.state;
+      }
     }
 
     return (
@@ -83,7 +90,7 @@ class TemperatureBig extends React.Component { // eslint-disable-line react/pref
           {data.attributes.friendly_name}
         </div>
         <span className={styles.number}>
-          {Math.round(currentTemperature)}
+          {Math.round(parseFloat(currentTemperature))}
         </span>
         <span className={styles.degree}>
           &deg; C

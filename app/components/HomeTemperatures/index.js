@@ -20,7 +20,7 @@ class HomeTemperatures extends React.Component { // eslint-disable-line react/pr
     return (
       <div>
         <Swiper>
-          <TemperatureBig data={sensor.badkamer} />
+          <TemperatureBig data={sensor.aeotec_zw100_multisensor_6_temperature_17_1} />
           <TemperatureBig data={climate.beneden} />
           <TemperatureBig data={climate.boven} />
           <TemperatureBig data={climate.slaapkamer} />
