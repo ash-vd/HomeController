@@ -23,7 +23,6 @@ class ThermostatControl extends React.Component { // eslint-disable-line react/p
   }
 
   _displayUpdate = (display) => {
-    console.log('display', display);
     this.setState({
       display,
     });
@@ -31,10 +30,10 @@ class ThermostatControl extends React.Component { // eslint-disable-line react/p
 
   render() {
     const { attributes } = this.props.data;
-    attributes.current_temperature = 17; // temporary
+    const current_temperature = Math.round(attributes.current_temperature * 2) / 2;
 
     const desiredTemp = this.state.display || attributes.temperature;
-    const difference = desiredTemp - attributes.current_temperature;
+    const difference = desiredTemp - current_temperature;
 
     return (
       <div className={styles.thermostatControl}>
@@ -51,7 +50,7 @@ class ThermostatControl extends React.Component { // eslint-disable-line react/p
             <span className={styles.currentTitle}>
               <FormattedMessage {...messages.current} />
             </span><br />
-            <span>{attributes.current_temperature} <span className={styles.degree}>&deg; C</span></span>
+            <span>{current_temperature} <span className={styles.degree}>&deg; C</span></span>
           </div>
           <div className={styles.control}>
             <span className={styles.difference}>
@@ -60,7 +59,7 @@ class ThermostatControl extends React.Component { // eslint-disable-line react/p
             <Dial
               min={attributes.min_temp}
               max={attributes.max_temp}
-              current={attributes.current_temperature}
+              current={current_temperature}
               desired={attributes.temperature}
               displayUpdate={this._displayUpdate}
             />

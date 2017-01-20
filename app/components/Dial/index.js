@@ -81,6 +81,10 @@ class Dial extends React.Component { // eslint-disable-line react/prefer-statele
     TweenMax.set(this.desiredLevel, {
       drawSVG: `${percent}%`,
     });
+    console.log(percent, this.currentLevel);
+    if (percent < this.currentLevel) {
+      console.log('smaller');
+    }
 
     /*
       Minimum value + (maximum - minimum) * percentage

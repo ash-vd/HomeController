@@ -41,15 +41,19 @@ class TemperatureBig extends React.Component { // eslint-disable-line react/pref
     data: React.PropTypes.object,
   };
 
+  _round(value) {
+    const rounded = Math.round(value * 2) / 2;
+    if (isNaN(rounded)) return 0;
+
+    return rounded;
+  }
+
   render() {
     const { data } = this.props;
-
-    console.log(data);
 
     // in a sensor we should pick the Temperature-attribute
     let currentTemperature = data.attributes.current_temperature;
     if (data.entity_group === 'sensor') {
-
       if (data.attributes.Temperature) {
         currentTemperature = data.attributes.Temperature;
       } else if (data.state) {
@@ -89,12 +93,15 @@ class TemperatureBig extends React.Component { // eslint-disable-line react/pref
         <div className={styles.roomName}>
           {data.attributes.friendly_name}
         </div>
-        <span className={styles.number}>
-          {Math.round(parseFloat(currentTemperature))}
-        </span>
-        <span className={styles.degree}>
-          &deg; C
-        </span>
+
+        <div className={styles.currentTemperature}>
+          <span className={styles.number}>
+            {this._round(currentTemperature)}
+          </span>
+          <span className={styles.degree}>
+            &deg; C
+          </span>
+        </div>
       </Wrapper>
     );
   }

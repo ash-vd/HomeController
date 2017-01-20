@@ -1,7 +1,6 @@
 .temperatureBig {
   display: block;
   text-decoration: none;
-  text-align: center;
   position: relative;
   color: #ffffff;
   padding-top: 1em;
@@ -12,6 +11,9 @@
   text-transform: uppercase;
   color: #ffffff;
   margin-bottom: 2em;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .thermometer {
@@ -25,7 +27,7 @@
 
 .number,
 .degree {
-  font-size: 8em;
+  font-size: 7em;
 }
 
 .number {
@@ -35,6 +37,11 @@
 .degree {
   color: #17ab91;
   letter-spacing: -0.15em
+}
+
+.currentTemperature {
+  text-align: center;
+  margin-top: 2.5em;
 }
 
 .desired {

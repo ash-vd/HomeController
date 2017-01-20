@@ -15,9 +15,13 @@ export class Footer extends React.Component { // eslint-disable-line react/prefe
     return (
       <div className={styles.footer}>
 
+        {
+          /*
         <span className={styles.link}>Home</span>
         <span className={styles.link}>Switches</span>
         <span className={styles.link}>Verwarming</span>
+        */
+       }
 
       </div>
     );

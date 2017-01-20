@@ -15,6 +15,7 @@ import { connect } from 'react-redux';
 import Wrapper from 'components/Wrapper';
 import HomeContent from 'components/HomeContent';
 import SubContent from 'components/SubContent';
+import Scenes from 'components/Scenes';
 
 import { selectHomePage } from './selectors';
 
@@ -31,7 +32,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
         <Wrapper>
           <HomeContent state={state} />
           <SubContent>
-            
+            <Scenes state={state} />
           </SubContent>
         </Wrapper>
 

@@ -1,0 +1,28 @@
+.scenes {
+  
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.scene {
+  margin: 0 1em;
+  padding: .5em 1em;
+  flex: 1;
+  height: 100%;
+  background: #1aa28a;
+  border-radius: .25em;
+  text-align: center;
+
+  &:active,
+  &:focus {
+    background: darken(#1aa28a, 5);
+  }
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: 300;
+}

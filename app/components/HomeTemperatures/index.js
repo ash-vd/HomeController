@@ -18,14 +18,12 @@ class HomeTemperatures extends React.Component { // eslint-disable-line react/pr
     const { climate, sensor } = this.props.state;
 
     return (
-      <div>
-        <Swiper>
-          <TemperatureBig data={sensor.aeotec_zw100_multisensor_6_temperature_17_1} />
-          <TemperatureBig data={climate.beneden} />
-          <TemperatureBig data={climate.boven} />
-          <TemperatureBig data={climate.slaapkamer} />
-        </Swiper>
-      </div>
+      <Swiper>
+        <TemperatureBig data={climate.boven} />
+        <TemperatureBig data={climate.beneden} />
+        <TemperatureBig data={sensor.aeotec_zw100_multisensor_6_temperature_17_1} />
+        <TemperatureBig data={climate.slaapkamer} />
+      </Swiper>
     );
   }
 }
